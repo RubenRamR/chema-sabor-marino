@@ -14,6 +14,23 @@ const Contact = () => {
   });
   const { toast } = useToast();
 
+  // Function to check if restaurant is open
+  const getRestaurantStatus = () => {
+    const now = new Date();
+    const currentHour = now.getHours();
+    
+    // Restaurant hours: 9:00 AM to 5:00 PM (9 to 17 in 24-hour format)
+    const isOpen = currentHour >= 9 && currentHour < 17;
+    
+    return {
+      isOpen,
+      message: isOpen ? "Abierto ahora" : "Cerrado ahora",
+      color: isOpen ? "text-green-600" : "text-red-600"
+    };
+  };
+  
+  const status = getRestaurantStatus();
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -37,10 +54,10 @@ const Contact = () => {
       icon: <Phone className="h-6 w-6" />,
       title: "Llámanos Directo",
       subtitle: "Respuesta inmediata",
-      value: "+52 667 123 4567",
+      value: "+52 644 114 3494",
       action: "Llamar Ahora",
       bg: "bg-primary",
-      href: "tel:+526671234567"
+      href: "tel:+526441143494"
     },
     {
       icon: <MessageCircle className="h-6 w-6" />,
@@ -49,7 +66,7 @@ const Contact = () => {
       value: "Enviar mensaje",
       action: "Abrir WhatsApp",
       bg: "bg-green-600",
-      href: "https://wa.me/526671234567?text=Hola!%20Me%20gustaría%20hacer%20un%20pedido"
+      href: "https://wa.me/526441143494?text=Hola!%20Me%20gustaría%20hacer%20un%20pedido"
     },
     {
       icon: <Mail className="h-6 w-6" />,
@@ -80,7 +97,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contacto" className="py-16 bg-background">
+    <section id="contacto" className="pt-32 pb-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
@@ -170,9 +187,9 @@ const Contact = () => {
                       Nuestra Ubicación
                     </h4>
                     <p className="text-muted-foreground">
-                      Esquina Chihuahua y Mariano Escobedo<br />
-                      Culiacán, Sinaloa<br />
-                      <span className="font-medium text-green-600">Abierto ahora</span>
+                      Calle Chihuahua & Mariano Escobedo, Campestre 2<br />
+                      85160 Cdad. Obregón, Son.<br />
+                      <span className={`font-medium ${status.color}`}>{status.message}</span>
                     </p>
                   </div>
                 </div>

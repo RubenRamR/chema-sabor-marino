@@ -3,6 +3,25 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Clock, Car, Navigation } from "lucide-react";
 
 const Location = () => {
+  // Function to check if restaurant is open
+  const getRestaurantStatus = () => {
+    const now = new Date();
+    const currentHour = now.getHours();
+    
+    // Restaurant hours: 9:00 AM to 5:00 PM (9 to 17 in 24-hour format)
+    const isOpen = currentHour >= 9 && currentHour < 17;
+    
+    return {
+      isOpen,
+      message: isOpen 
+        ? "🟢 Abierto ahora - Cierra a las 5:00 PM"
+        : "🔴 Cerrado ahora - Abre a las 9:00 AM",
+      bgColor: isOpen ? "bg-green-50" : "bg-red-50",
+      textColor: isOpen ? "text-green-700" : "text-red-700"
+    };
+  };
+  
+  const status = getRestaurantStatus();
   return (
     <section id="ubicacion" className="py-16 bg-light-bg">
       <div className="container mx-auto px-4">
@@ -15,15 +34,33 @@ const Location = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Map Section */}
           <Card className="overflow-hidden shadow-lg">
             <CardContent className="p-0">
-              <div className="relative h-80 bg-gray-200 flex items-center justify-center">
-                <div className="text-center text-gray-600">
-                  <MapPin className="h-12 w-12 mx-auto mb-4 text-primary" />
-                  <p className="text-lg font-semibold">Mapa Interactivo</p>
-                  <p className="text-sm">Google Maps se cargaría aquí</p>
+              <div className="relative h-64 sm:h-80 w-full">
+                <iframe
+  src="https://www.google.com/maps?q=Mariscos+El+Chema,+Calle+Chihuahua+%26+Mariano+Escobedo,+Campestre+2,+85160+Cdad.+Obregón,+Son.&output=embed"
+  width="100%"
+  height="100%"
+  style={{ border: 0 }}
+  allowFullScreen
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+  title="Ubicación de Mariscos El Chema"
+  className="rounded-t-lg"
+></iframe>
+                
+                {/* Overlay button for mobile interaction */}
+                <div className="absolute top-4 right-4 z-10">
+                  <button
+                    onClick={() => window.open('https://maps.google.com/?q=Mariscos+El+Chema,+Calle+Chihuahua+%26+Mariano+Escobedo,+Campestre+2,+85160+Cdad.+Obregón,+Son.', '_blank')}
+                    className="bg-white/90 backdrop-blur-sm hover:bg-white text-primary font-semibold py-2 px-3 sm:px-4 rounded-lg shadow-lg transition-all duration-200 flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm touch-manipulation"
+                  >
+                    <Navigation className="h-4 w-4" />
+                    <span className="hidden sm:inline">Abrir en Maps</span>
+                    <span className="sm:hidden">Maps</span>
+                  </button>
                 </div>
               </div>
               <div className="p-6 bg-primary text-white">
@@ -31,8 +68,8 @@ const Location = () => {
                   <MapPin className="h-5 w-5 flex-shrink-0" />
                   <div>
                     <h3 className="font-bold">Dirección Principal</h3>
-                    <p className="text-gray-200">Esquina Chihuahua y Mariano Escobedo</p>
-                    <p className="text-gray-200">Culiacán, Sinaloa</p>
+                    <p className="text-gray-200">Mariscos "El Chema"</p>
+                    <p className="text-gray-200">Calle Chihuahua & Mariano Escobedo, Campestre 2, 85160 Cdad. Obregón, Son.</p>
                   </div>
                 </div>
               </div>
@@ -54,21 +91,13 @@ const Location = () => {
                     </h3>
                     <div className="space-y-2 text-muted-foreground">
                       <div className="flex justify-between">
-                        <span>Lunes - Jueves:</span>
-                        <span className="font-medium">11:00 AM - 9:00 PM</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Viernes - Sábado:</span>
-                        <span className="font-medium">11:00 AM - 10:00 PM</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Domingo:</span>
-                        <span className="font-medium">11:00 AM - 8:00 PM</span>
+                        <span>Lunes a Domingo:</span>
+                        <span className="font-medium">9:00 AM - 5:00 PM</span>
                       </div>
                     </div>
-                    <div className="mt-4 p-3 bg-green-50 rounded-lg">
-                      <p className="text-green-700 text-sm font-medium">
-                        🟢 Abierto ahora - Cierra a las 9:00 PM
+                    <div className={`mt-4 p-3 ${status.bgColor} rounded-lg`}>
+                      <p className={`${status.textColor} text-sm font-medium`}>
+                        {status.message}
                       </p>
                     </div>
                   </div>

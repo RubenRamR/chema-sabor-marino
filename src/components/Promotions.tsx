@@ -49,7 +49,7 @@ const Promotions = () => {
   };
 
   return (
-    <section id="promociones" className="py-16 bg-light-bg">
+    <section id="promociones" className="pt-32 pb-16 bg-light-bg">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">

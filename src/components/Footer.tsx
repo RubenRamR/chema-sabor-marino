@@ -95,8 +95,7 @@ const Footer = () => {
                 <MapPin className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300">
-                    Esquina Chihuahua y Mariano Escobedo<br />
-                    Culiacán, Sinaloa
+Calle Chihuahua & Mariano Escobedo, Campestre 2, 85160 Cdad. Obregón, Son.
                   </p>
                 </div>
               </div>
@@ -104,10 +103,10 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-accent flex-shrink-0" />
                 <a 
-                  href="tel:+526671234567"
+                  href="tel:+526441143494"
                   className="text-gray-300 hover:text-white transition-colors duration-200"
                 >
-                  +52 667 123 4567
+                  +52 644 114 3494
                 </a>
               </div>
               
@@ -125,9 +124,7 @@ const Footer = () => {
                 <Clock className="h-5 w-5 text-accent mt-1 flex-shrink-0" />
                 <div className="text-gray-300 text-sm">
                   <div className="font-medium text-white mb-1">Horarios:</div>
-                  <div>Lun - Jue: 11:00 AM - 9:00 PM</div>
-                  <div>Vie - Sáb: 11:00 AM - 10:00 PM</div>
-                  <div>Dom: 11:00 AM - 8:00 PM</div>
+                  <div>Lunes a Domingo: 9:00 AM - 5:00 PM</div>
                 </div>
               </div>
             </div>
@@ -160,7 +157,7 @@ const Footer = () => {
         <Button 
           size="lg"
           className="bg-green-600 hover:bg-green-700 text-white rounded-full p-4 shadow-2xl animate-pulse"
-          onClick={() => window.open('https://wa.me/526671234567?text=Hola!%20Me%20gustaría%20hacer%20un%20pedido', '_blank')}
+          onClick={() => window.open('https://wa.me/526441143494?text=Hola!%20Me%20gustaría%20hacer%20un%20pedido', '_blank')}
         >
           <MessageCircle className="h-6 w-6" />
         </Button>

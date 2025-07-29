@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Droplets, Fish, UtensilsCrossed, Clock, Heart, Award } from "lucide-react";
-import cevicheImage from "@/assets/ceviche-special.jpg";
 
 const WhyChooseUs = () => {
   const reasons = [
@@ -37,7 +36,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-16 bg-light-bg">
+    <section id="nosotros" className="pt-32 pb-16 bg-light-bg">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
@@ -48,7 +47,7 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:px-4">
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {reasons.map((reason, index) => (
@@ -75,36 +74,39 @@ const WhyChooseUs = () => {
 
           {/* Featured Image */}
           <div className="relative">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+            {/* Stats Cards - Centered together */}
+            <div className="flex justify-center items-start gap-4 mb-6">
+              <div className="bg-white rounded-xl shadow-xl p-4 z-10">
+                <div className="text-center min-w-[80px]">
+                  <div className="text-2xl font-bold text-primary mb-1">4.8</div>
+                  <div className="text-yellow-500 text-lg mb-1">★★★★★</div>
+                  <div className="text-xs text-muted-foreground whitespace-nowrap">+500 reseñas</div>
+                </div>
+              </div>
+              
+              <div className="bg-accent text-white rounded-xl shadow-xl p-4 z-10">
+                <div className="text-center min-w-[80px]">
+                  <div className="text-2xl font-bold mb-1">15+</div>
+                  <div className="text-xs whitespace-nowrap">Años de<br />experiencia</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Image Container */}
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl lg:mx-8">
               <img 
-                src={cevicheImage}
-                alt="Ceviche especial de Mariscos El Chema"
+                src="/MCHTostada.png"
+                alt="Tostada especial de Mariscos El Chema"
                 className="w-full h-96 object-cover transform hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6 text-white">
                 <h3 className="text-2xl font-bold mb-2">
-                  Ceviche de la Casa
+                  Tostada de la Casa
                 </h3>
                 <p className="text-gray-200">
                   Nuestra especialidad que conquistó el paladar de la región
                 </p>
-              </div>
-            </div>
-
-            {/* Floating Stats */}
-            <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-xl p-6 hidden lg:block">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-1">4.8</div>
-                <div className="text-yellow-500 text-xl mb-1">★★★★★</div>
-                <div className="text-sm text-muted-foreground">+500 reseñas</div>
-              </div>
-            </div>
-
-            <div className="absolute -bottom-6 -left-6 bg-accent text-white rounded-xl shadow-xl p-6 hidden lg:block">
-              <div className="text-center">
-                <div className="text-3xl font-bold mb-1">15+</div>
-                <div className="text-sm">Años de experiencia</div>
               </div>
             </div>
           </div>
